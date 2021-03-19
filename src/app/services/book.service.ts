@@ -31,4 +31,41 @@ export class BookService{
 
     }
 
+    getBooks(): Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url+'book', {headers: headers});
+
+	}
+
+	getBook(id): Observable<any>{
+
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url+'book/'+id, {headers: headers});
+
+	}
+
+    update(book, id): Observable<any>{
+
+		let json = JSON.stringify(book);
+
+		let params = 'json='+json;
+
+		let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+
+		return this._http.put(this.url+'book/'+id, params, {headers: headers});
+
+
+
+	}
+
+	delete(id){
+
+		let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+
+		return this._http.delete(this.url + 'book/' + id, {headers: headers});
+
+	}
+
 }

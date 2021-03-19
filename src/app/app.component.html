@@ -13,7 +13,10 @@
           <a class="nav-link" [routerLink]="['/inicio']">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/crear-libro']">Link</a>
+          <a class="nav-link" [routerLink]="['/crear-libro']">Crear</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/editar-libro']">Editar</a>
         </li>
       </ul>
       <!--
@@ -27,6 +30,12 @@
 
   <!--Contenido-->
 <router-outlet></router-outlet>
+
+
+<footer>
+<hr/>
+  Manik &copy;
+</footer>
 
 </div>
 
