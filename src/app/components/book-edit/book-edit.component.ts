@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
-
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
 
 
 @Component({
   selector: 'app-book-edit',
-  templateUrl: './book-edit.component.html',
-  styleUrls: ['./book-edit.component.css'],
+  templateUrl: '../book-new/book-new.component.html',
   providers: [BookService]
 })
 export class BookEditComponent implements OnInit {
@@ -24,7 +22,7 @@ export class BookEditComponent implements OnInit {
     private _route: ActivatedRoute,
 		private _router: Router,
   ) { 
-    this.page_title = 'Edit  libro';
+    this.page_title = 'Editar libro';
     this.is_edit	  = true;
   }
 
@@ -37,14 +35,15 @@ export class BookEditComponent implements OnInit {
   }
 
   onSubmit(form){
+    
 		this._bookService.update(this.book, this.book.id).subscribe(
 
 			response => {
 				if(response.status == 'success'){
 					this.status = 'success';
-					this.book 	= response.book;
+					//this.book 	= response.book;
 
-					this._router.navigate(['/entrada', this.book.id]);
+					this._router.navigate(['/inicio']);
 				}else{
 					this.status = 'error';
 				}
@@ -64,7 +63,6 @@ export class BookEditComponent implements OnInit {
 
       let id = +params['id'];
 
-      id = 12;
 
       //Peticion ajax para sacar los datos del post
       this._bookService.getBook(id).subscribe(
@@ -74,7 +72,6 @@ export class BookEditComponent implements OnInit {
           if(response.status == 'success'){
 
             this.book = response.book;
-            
 
           }else{
 

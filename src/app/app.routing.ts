@@ -14,8 +14,8 @@ const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: 'inicio', component: HomeComponent},
     {path: 'crear-libro', component: BookNewComponent},
-    {path: 'detalle-libro', component: BookDetailComponent},
-    {path: 'editar-libro', component: BookEditComponent},
+    {path: 'detalle-libro/:id', component: BookDetailComponent},
+    {path: 'editar-libro/:id', component: BookEditComponent},
     {path: '**', component: ErrorComponent}
 ];
 

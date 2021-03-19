@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
+import { Router, ActivatedRoute, Params} from '@angular/router';
 
 //Generar categoryService para las categorias
 
@@ -13,12 +14,15 @@ import { BookService } from '../../services/book.service';
 export class BookNewComponent implements OnInit {
   public page_title: string;
   public book: Book;
+  public is_edit: boolean;
 
   constructor(
-    private _bookService: BookService
+    private _bookService: BookService,
+    private _router: Router
   ) { 
     this.page_title = 'Crear nuevo libro';
     this.book = new Book(1,1,1,'','','','','','','');
+    this.is_edit = false;
   }
 
 
@@ -30,7 +34,7 @@ export class BookNewComponent implements OnInit {
   onSubmit(form){
     this._bookService.create(this.book).subscribe(
       response => {
-        console.log(response);
+        this._router.navigate(['/inicio']);
         form.reset();
       },
       error => {

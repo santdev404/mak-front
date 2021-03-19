@@ -35,9 +35,9 @@
                     <!--botones de accion-->
                     <div class="book-buttons mt-3">
                     
-                        <a [routerLink]="['/inicio']" class="btn btn-warning mr-3">Editar</a>
+                        <a [routerLink]="['/editar-libro',book.id]" class="btn btn-warning mr-3">Editar</a>
                         
-                        <a [routerLink]="['/inicio']" class="btn btn-danger mr-3">Borrar</a>
+                        <a (click)="deleteBook(book.id)" class="btn btn-danger mr-3">Borrar</a>
                     </div>
                 </td>
 
