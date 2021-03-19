@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
+import { Category } from '../../models/category';
 import { BookService } from '../../services/book.service';
+import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
-
 
 
 @Component({
   selector: 'app-book-edit',
   templateUrl: '../book-new/book-new.component.html',
-  providers: [BookService]
+  providers: [BookService, CategoryService]
 })
 export class BookEditComponent implements OnInit {
   public page_title: string;
   public book: Book;
+  public categories;
   public status;
 	public is_edit: boolean;
 
 
   constructor(
     private _bookService: BookService,
+    private _categoryService: CategoryService,
     private _route: ActivatedRoute,
 		private _router: Router,
   ) { 
@@ -28,9 +31,10 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.getCategories();
+    this.getCategories();
     this.book = new Book(1,1,1,'','','','','','','');
 		this.getBook();
+
 
   }
 
@@ -88,6 +92,27 @@ export class BookEditComponent implements OnInit {
       );
     });
 
+}
+
+getCategories(){
+  this._categoryService.getCategories().subscribe(
+
+    response => {
+
+      if(response.status == 'success'){
+
+        this.categories = response.categories;
+
+
+      }
+
+
+    },
+    error => {
+      console.log(error);
+    }
+
+  );
 }
 
   

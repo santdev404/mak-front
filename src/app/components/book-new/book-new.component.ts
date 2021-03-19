@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
+import { Category } from '../../models/category';
 import { BookService } from '../../services/book.service';
+import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
-//Generar categoryService para las categorias
 
 @Component({
   selector: 'book-new',
   templateUrl: './book-new.component.html',
   styleUrls: ['./book-new.component.css'],
-  providers: [BookService]
+  providers: [BookService, CategoryService]
 })
 export class BookNewComponent implements OnInit {
   public page_title: string;
   public book: Book;
+  public categories;
+	public status;
   public is_edit: boolean;
 
   constructor(
     private _bookService: BookService,
+    private _categoryService: CategoryService,
     private _router: Router
   ) { 
     this.page_title = 'Crear nuevo libro';
@@ -27,8 +31,9 @@ export class BookNewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('Book new');
-    console.log(this._bookService.test());
+    
+    this.getCategories();
+
   }
 
   onSubmit(form){
@@ -41,9 +46,29 @@ export class BookNewComponent implements OnInit {
         console.log(<any>error);
       }
     );
-    
-    
   }
+
+
+  getCategories(){
+		this._categoryService.getCategories().subscribe(
+
+			response => {
+
+				if(response.status == 'success'){
+
+					this.categories = response.categories;
+
+
+				}
+
+
+			},
+			error => {
+				console.log(error);
+			}
+
+		);
+	}
 
 
 }
