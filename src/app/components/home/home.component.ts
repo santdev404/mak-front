@@ -5,6 +5,8 @@ import { BookService } from '../../services/book.service';
 import { global } from '../../services/global';
 
 
+
+
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -15,6 +17,8 @@ export class HomeComponent implements OnInit {
   public page_title: string;
   public url;
   public books: Array<Book>;
+  public name: any;
+  public p:number = 1;
 
   constructor(
     private _bookService: BookService
@@ -46,6 +50,39 @@ export class HomeComponent implements OnInit {
 
 
   	);
+  }
+
+
+  deleteBook(id){
+    this._bookService.delete(id).subscribe(
+
+      response => {
+
+        this.getBooks();
+
+      },
+      error => {
+
+        console.log(error);
+
+      }
+
+    );
+  }
+
+  Search(){
+    if(this.name == ""){
+
+      this.ngOnInit();
+
+    }else{
+
+      this.ngOnInit();
+
+
+    }
+
+    console.log('entro');
   }
 
 }

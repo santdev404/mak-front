@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { routing, appRoutingProviders } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrderModule } from 'ngx-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
@@ -28,7 +31,10 @@ import { ErrorComponent } from './components/error/error.component';
     BrowserModule,
     routing,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    OrderModule,
+    NgxPaginationModule
   ],
   providers: [
     appRoutingProviders
