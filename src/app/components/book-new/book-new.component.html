@@ -1,2 +1,56 @@
-<h1>{{page_title}}</h1>
-<p>book-new works!</p>
+<div class="col-md-12 mt-3">
+
+    <h1>{{page_title}}</h1>
+    <p>book-new works!</p>
+
+    <!--
+    <p *ngIf="status != 'success'">Registrate en nuestra plataforma para crear nuevas entradas y mucho mas!</p>
+
+	<div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+		El registrp se ha completado correctamente, <a [routerLink]="['/login']">Logueate aqui</a>
+	</div>
+
+	<div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'error'">
+		El registro no se ha completado correctamente
+	</div>
+    -->
+
+    <!--Formulario de registro-->
+	<form class="col-md-5 ml-0 pl-0" #bookNew="ngForm" (ngSubmit)="onSubmit(bookNew)">
+		<div class="form-group">
+			<label for="name">Nombre</label>
+			<input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="book.name" required pattern="[a-zA-Z ]+">
+
+			<small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+				El nombre no es valido
+			</small>	
+		</div>
+
+		<div class="form-group">
+			<label for="publication_date">Fecha de publicacion</label>
+			<input type="date" name="publication_date" class="form-control" #publication_date="ngModel" [(ngModel)]="book.publication_date" required >
+		</div>
+
+        <div class="form-group">
+			<label for="author">Autor</label>
+			<input type="text" name="author" class="form-control" #author="ngModel" [(ngModel)]="book.author" required pattern="[a-zA-Z ]+">
+
+			<small *ngIf="!author.valid && author.touched" class="invalid-feedback d-block">
+				El autor no es valido
+			</small>	
+		</div>
+
+        <div class="form-group">
+			<label for="content">Contenido</label>
+			<input type="text" name="content" class="form-control" #content="ngModel" [(ngModel)]="book.content" required pattern="[a-zA-Z ]+">
+
+			<small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+				El contenido no es valido
+			</small>	
+		</div>
+
+		<input type="submit" value="Crear" class="btn btn-success" [disabled]="bookNew.invalid"/>
+
+	</form>	
+
+</div>

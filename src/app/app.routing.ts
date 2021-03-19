@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BookNewComponent } from './components/book-new/book-new.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { BookEditComponent } from './components/book-edit/book-edit.component';
+import { ErrorComponent } from './components/error/error.component';
 
 //Definir las rutas
 const appRoutes: Routes = [
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
 	{path: 'inicio', component: HomeComponent},
     {path: 'crear-libro', component: BookNewComponent},
     {path: 'detalle-libro', component: BookDetailComponent},
-    {path: 'editar-libro', component: BookEditComponent}
+    {path: 'editar-libro', component: BookEditComponent},
+    {path: '**', component: ErrorComponent}
 ];
 
 //Exportar configuracion

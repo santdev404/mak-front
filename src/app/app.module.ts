@@ -1,6 +1,10 @@
-import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { routing, appRoutingProviders } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
@@ -8,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { BookEditComponent } from './components/book-edit/book-edit.component';
 import { BookNewComponent } from './components/book-new/book-new.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +21,14 @@ import { BookNewComponent } from './components/book-new/book-new.component';
     HomeComponent,
     BookDetailComponent,
     BookEditComponent,
-    BookNewComponent
+    BookNewComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    routing
+    routing,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     appRoutingProviders
