@@ -5,10 +5,16 @@ import { BookService } from '../../services/book.service';
 import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
+import { FormControl } from '@angular/forms';
+import { map, startWith, debounceTime } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
+
+
 
 @Component({
   selector: 'app-book-edit',
-  templateUrl: '../book-new/book-new.component.html',
+  templateUrl: '../book-edit/book-edit.component.html',
   providers: [BookService, CategoryService]
 })
 export class BookEditComponent implements OnInit {
@@ -17,6 +23,11 @@ export class BookEditComponent implements OnInit {
   public categories;
   public status;
 	public is_edit: boolean;
+
+  public countries: string[] = ['España', 'Mexico','Colombia'];
+
+  public control = new FormControl();
+  public filCountries: Observable <string[]>;
 
 
   constructor(
@@ -34,6 +45,11 @@ export class BookEditComponent implements OnInit {
     this.getCategories();
     this.book = new Book(1,1,1,'','','','','','','');
 		this.getBook();
+
+    this.filCountries = this.control.valueChanges.pipe(
+      startWith(''),
+      map(val => this._filter(val))
+    );
 
 
   }
@@ -115,6 +131,12 @@ getCategories(){
   );
 }
 
+private _filter(val: string): string[] {
+
+  const formatVal = val.toLocaleLowerCase();
+  return this.countries.filter(country => country.toLocaleLowerCase().indexOf(formatVal) === 0);
+
+}
   
 
 }

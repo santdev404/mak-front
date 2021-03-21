@@ -47,9 +47,18 @@
                     <div class="book-buttons mt-3">
 
                         <!-- Button to Open the Modal -->
-                        <button type="button" class="btn btn-success" data-toggle="modal" [attr.data-target]="'#myModal'+book.id">
-                        Status
-                        </button>
+                        <div *ngIf="book.borrow == 0">
+                            <button type="button"  class="btn btn-success" data-toggle="modal" [attr.data-target]="'#myModal'+book.id">
+                                Status
+                                </button>
+                        </div>
+
+
+                        <div *ngIf="book.borrow == 1">
+                            <button type="button"  (click)='searchBookStatus(book.id)' class="btn btn-success" data-toggle="modal" [attr.data-target]="'#myModal'+book.id">
+                                Status
+                                </button>
+                        </div>
 
                         <!-- The Modal -->
                         <div class="modal" id="myModal{{book.id}}">
@@ -58,13 +67,51 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Asignado a?</h4>
+                                <h4 class="modal-title">Status de libro: {{book.name}}</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                Prestado {{book.name}}
+
+                                <ul>
+                                    <li>Nombre: {{book.name}}</li>
+                                    <li *ngIf="book.borrow == 0">Disponible</li>
+                                    <div *ngIf="book.borrow == 1">
+                                        <li >No disponible</li>
+                                        <div *ngIf="bookData">
+                                            <li >Usuario que lo presto: {{bookData[0].userName}} {{ bookData[0].userSurname }}</li>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </ul>
+
+                                <div *ngIf="book.borrow == 0">
+
+                                    <div class="form-group">
+                                        <label for="userBorrowed">Selecciona usuario que lo presta</label>
+                            
+                                        <select name="userBorrowed" #user="ngModel" [(ngModel)]="borrow_user_id" class="form-control" (change)="selectChangeHandler($event)">
+                                            
+                                            <option *ngFor="let user of users" value="{{user.id}}">
+                                                {{user.name}}  {{user.surname}}
+                                            </option>
+                            
+                                        </select>
+
+
+                                        <br>
+                                        <button type="button" class="btn btn-primary" (click)='savelockBock(book.id, selectedValud)' data-dismiss="modal">Prestar</button>
+                                    </div>
+
+                                </div>
+
+                                <div *ngIf="book.borrow == 1">
+                                    <button type="button" class="btn btn-danger" (click)='unlockBook(book.id)' data-dismiss="modal">Devolver</button>
+                                </div>
+
                             </div>
 
                             <!-- Modal footer -->
