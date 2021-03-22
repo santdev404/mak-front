@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
 
   public filterValues = {};
   public dataSource = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'name', 'publication_date', 'author', 'category', 'borrow'];
+  public displayedColumns: string[] = ['id', 'name', 'publication_date', 'author', 'category', 'borrow', 'buttons'];
 
   
   public filterSelectObj = [];
@@ -81,14 +81,14 @@ export class ListComponent implements OnInit {
     this.filterSelectObj = [
       {
         name: 'ID',
-        columnProp: 'id',
+        columnProp: 'ID',
         options: []
       }, {
-        name: 'Nombre',
-        columnProp: 'name',
+        name: 'Name',
+        columnProp: 'NAME',
         options: []
       }, {
-        name: 'Fecha de publicacion',
+        name: 'Publication date',
         columnProp: 'publication_date',
         options: []
       }, {
@@ -96,7 +96,7 @@ export class ListComponent implements OnInit {
         columnProp: 'author',
         options: []
       }, {
-        name: 'STATUS',
+        name: 'Status',
         columnProp: 'borrow',
         options: []
       }
