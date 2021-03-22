@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 //import { threadId } from 'node:worker_threads';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
@@ -6,6 +6,8 @@ import { BorrowService } from '../../services/borrow.service';
 import { CategoryService } from '../../services/category.service';
 
 import { global } from '../../services/global';
+
+import { HttpClient } from '@angular/common/http';
 
 
 
