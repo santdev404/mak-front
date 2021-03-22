@@ -64,7 +64,7 @@ export class BookNewComponent implements OnInit {
     private service: Service
 
   ) { 
-    this.page_title = 'Crear nuevo libro';
+    this.page_title = 'Crear libro';
     this.book = new Book(1,1,1,'','','','','','','');
     this.is_edit = false;
 
