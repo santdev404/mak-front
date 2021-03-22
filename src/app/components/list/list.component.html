@@ -11,7 +11,7 @@
     <button mat-flat-button color="warn" (click)="resetFilters()">Reset</button>
   </div>
 
-  <table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> id </th>
@@ -135,4 +135,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
+    
+
   </table>
+
+  <mat-paginator [pageSizeOptions]="[3,10,20]" showFirstLastButtons></mat-paginator>
+

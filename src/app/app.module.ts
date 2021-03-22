@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 import { AppComponent } from './app.component';
@@ -58,7 +59,8 @@ import { ErrorComponent } from './components/error/error.component';
     MatDialogModule,
     MatInputModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
 
   ],
   providers: [

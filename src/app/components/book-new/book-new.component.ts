@@ -43,6 +43,7 @@ export class BookNewComponent implements OnInit {
   public categories;
 	public status;
   public is_edit: boolean;
+  public selectedValud: string;
 
 
 
@@ -124,6 +125,11 @@ export class BookNewComponent implements OnInit {
 		);
 	}
 
+  selectChangeHandler(option){
+
+    console.log(option.id);
+    this.book.category_id = option.id;
+  }
 
 
   /***************************** */

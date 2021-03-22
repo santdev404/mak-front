@@ -17,6 +17,7 @@ import { ThrowStmt } from '@angular/compiler';
   templateUrl: '../book-edit/book-edit.component.html',
   providers: [BookService, CategoryService]
 })
+
 export class BookEditComponent implements OnInit {
   public page_title: string;
   public book: Book;

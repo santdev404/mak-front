@@ -14,12 +14,12 @@ import { ErrorComponent } from './components/error/error.component';
 
 //Definir las rutas
 const appRoutes: Routes = [
-	{path: '', component: HomeComponent},
-	{path: 'inicio', component: HomeComponent},
+	{path: '', component: ListComponent},
+    {path: 'inicio', component: ListComponent},
     {path: 'crear-libro', component: BookNewComponent},
     {path: 'detalle-libro/:id', component: BookDetailComponent},
     {path: 'editar-libro/:id', component: BookEditComponent},
-    {path: 'list', component: ListComponent},
+    
     {path: '**', component: ErrorComponent}
 ];
 

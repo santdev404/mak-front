@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChild } from '@angular/core';
 //import { threadId } from 'node:worker_threads';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 import { global } from '../../services/global';
 
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
@@ -44,6 +45,8 @@ export class Service {
 })
 
 export class ListComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   public page_title: string;
   public url;
@@ -108,24 +111,9 @@ export class ListComponent implements OnInit {
 
     // Overrride default filter behaviour of Material Datatable
     this.dataSource.filterPredicate = this.createFilter();
+    
     this.getUsers();
 
-  }
-
-  getRemoteData2(){
-  	this._bookService.getManyBooks().subscribe(
-
-  		response => {
-
-        this.dataSource = response.books;
-
-  		},
-  		error => {
-  			console.log(error);
-  		}
-
-
-  	);
   }
 
 
@@ -149,7 +137,8 @@ export class ListComponent implements OnInit {
         response => {
   
           this.dataSource.data = response.post;
-          this.remoteDummy.data = response.post;      
+          this.remoteDummy.data = response.post;   
+          this.dataSource.paginator = this.paginator;   
           
           this.filterSelectObj.filter((o) => {
             o.options = this.getFilterObject(this.dataSource.data, o.columnProp);
