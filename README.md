@@ -1,27 +1,11 @@
-# ProjectAngular
+#Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+##Before to performe the angular configuration, install all the PHP tools form the santdev404/mak1" php repository.
 
-## Development server
+###The next step need to be follow to install the angular enviroment.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Download the last Node version.
+- Create a directory "project-angular" in '/opt/lampp/htdocs/'
+- Download the "santdev404/mak-front" angular repository in '/opt/lampp/htdocs/project-angular' directory.
+- In the '/opt/lampp/htdocs/project-angular' install all the dependencies with 'npm update --force'
+- On terminal starts the project with 'npm serve' command.
