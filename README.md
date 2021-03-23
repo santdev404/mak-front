@@ -1,8 +1,8 @@
-#Angular
+# Angular
 
-##Before to performe the angular configuration, install all the PHP tools form the santdev404/mak1" php repository.
+## Before to performe the angular configuration, install all the PHP tools form the santdev404/mak1" php repository.
 
-###The next step need to be follow to install the angular enviroment.
+### The next step need to be follow to install the angular enviroment.
 
 - Download the last Node version.
 - Create a directory "project-angular" in '/opt/lampp/htdocs/'
